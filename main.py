@@ -1,13 +1,21 @@
+# READ README.md
+
+import os
+from dotenv import load_dotenv
 import socket
 import threading
 
 import rsa
 
+load_dotenv('.env')
+ip = os.getenv('IPADRESS')
+port = int(os.getenv('PORT'))
+
 choise = input('Do you want to Host (1) or to connect (2): ')
 
 if choise == '1':
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(("192.168.1.78", 9999))
+    server.bind((ip, port))
     server.listen()
 
     client, _ = server.accept()
@@ -26,7 +34,6 @@ def sending_messages(c):
 
 def receiving_messages(c):
     while True:
-        message = input("")
         print ('Partner: ' + c.recv(1024).decode())
 
 
