@@ -1,0 +1,5 @@
+requests==2.25.1
+rsa==4.9
+sockets==1.0.0
+thread6==0.2.0
+
